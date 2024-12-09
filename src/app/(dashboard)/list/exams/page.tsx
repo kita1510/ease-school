@@ -5,6 +5,7 @@ import TableSearch from "@/components/TableSearch";
 import { examsData, role } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/settings";
+import { auth } from "@clerk/nextjs/server";
 import { Class, Exam, Prisma, Subject, Teacher } from "@prisma/client";
 import Image from "next/image";
 
@@ -68,11 +69,14 @@ const ExamListPage = async ({
     </tr>
   );
 
+  const { userId, sessionClaims } = await auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+
   const { page, ...queryParams } = searchParams;
 
   const p = page ? parseInt(page) : 1;
 
-  // const currentUserId = userId;
+  const currentUserId = userId;
 
   // URL PARAMS CONDITION
 
@@ -101,54 +105,54 @@ const ExamListPage = async ({
     }
   }
 
-    // ROLE CONDITIONS
+  // ROLE CONDITIONS
 
-    // switch (role) {
-    //   case "admin":
-    //     break;
-    //   case "teacher":
-    //     query.lesson.teacherId = currentUserId!;
-    //     break;
-    //   case "student":
-    //     query.lesson.class = {
-    //       students: {
-    //         some: {
-    //           id: currentUserId!,
-    //         },
-    //       },
-    //     };
-    //     break;
-    //   case "parent":
-    //     query.lesson.class = {
-    //       students: {
-    //         some: {
-    //           parentId: currentUserId!,
-    //         },
-    //       },
-    //     };
-    //     break;
-  
-    //   default:
-    //     break;
-    // }
-
-    const [data, count] = await prisma.$transaction([
-      prisma.exam.findMany({
-        where: query,
-        include: {
-          lesson: {
-            select: {
-              subject: { select: { name: true } },
-              teacher: { select: { name: true, surname: true } },
-              class: { select: { name: true } },
-            },
+  switch (role) {
+    case "admin":
+      break;
+    case "teacher":
+      query.lesson.teacherId = currentUserId!;
+      break;
+    case "student":
+      query.lesson.class = {
+        students: {
+          some: {
+            id: currentUserId!,
           },
         },
-        take: ITEM_PER_PAGE,
-        skip: ITEM_PER_PAGE * (p - 1),
-      }),
-      prisma.exam.count({ where: query }),
-    ]);
+      };
+      break;
+    case "parent":
+      query.lesson.class = {
+        students: {
+          some: {
+            parentId: currentUserId!,
+          },
+        },
+      };
+      break;
+
+    default:
+      break;
+  }
+
+  const [data, count] = await prisma.$transaction([
+    prisma.exam.findMany({
+      where: query,
+      include: {
+        lesson: {
+          select: {
+            subject: { select: { name: true } },
+            teacher: { select: { name: true, surname: true } },
+            class: { select: { name: true } },
+          },
+        },
+      },
+      take: ITEM_PER_PAGE,
+      skip: ITEM_PER_PAGE * (p - 1),
+    }),
+    prisma.exam.count({ where: query }),
+  ]);
 
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
