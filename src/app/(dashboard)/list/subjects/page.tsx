@@ -48,6 +48,7 @@ const SubjectListPage = async ({
             <>
               <FormContainer table="subject" type="create" />
               <FormContainer table="subject" type="update" />
+              <FormContainer table="subject" type="delete" id={item.id} />
             </>
           )}
         </div>
