@@ -3,7 +3,7 @@
 import {
   deleteClass,
   // deleteExam,
-  // deleteStudent,
+  deleteStudent,
   deleteSubject,
   deleteTeacher,
 } from "@/lib/actions";
@@ -14,13 +14,12 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "react-toastify";
 import { FormContainerProps } from "./FormContainer";
-import ClassForm from "./forms/ClassForm";
 
 const deleteActionMap = {
   subject: deleteSubject,
   class: deleteClass,
   teacher: deleteTeacher,
-  // student: deleteStudent,
+  student: deleteStudent,
   // exam: deleteExam,
   // TODO: OTHER DELETE ACTIONS
   // parent: deleteSubject,
@@ -46,9 +45,9 @@ const StudentForm = dynamic(() => import("./forms/StudentForm"), {
 const SubjectForm = dynamic(() => import("./forms/SubjectForm"), {
   loading: () => <h1>Loading...</h1>,
 });
-// const ClassForm = dynamic(() => import("./forms/ClassForm"), {
-//   loading: () => <h1>Loading...</h1>,
-// });
+const ClassForm = dynamic(() => import("./forms/ClassForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
 // const ExamForm = dynamic(() => import("./forms/ExamForm"), {
 //   loading: () => <h1>Loading...</h1>,
 // });
@@ -86,14 +85,14 @@ const forms: {
       relatedData={relatedData}
     />
   ),
-  // student: (setOpen, type, data, relatedData) => (
-  //   <StudentForm
-  //     type={type}
-  //     data={data}
-  //     setOpen={setOpen}
-  //     relatedData={relatedData}
-  //   />
-  // ),
+  student: (setOpen, type, data, relatedData) => (
+    <StudentForm
+      type={type}
+      data={data}
+      setOpen={setOpen}
+      relatedData={relatedData}
+    />
+  ),
   // exam: (setOpen, type, data, relatedData) => (
   //   <ExamForm
   //     type={type}
@@ -123,10 +122,13 @@ const FormModal = ({
   const [open, setOpen] = useState(false);
 
   const Form = () => {
-    const [state, formAction] = useFormState(deleteActionMap[table], {
-      success: false,
-      error: false,
-    });
+    const [state, formAction] = useFormState(
+      deleteActionMap[table as keyof typeof deleteActionMap],
+      {
+        success: false,
+        error: false,
+      }
+    );
 
     const router = useRouter();
 
