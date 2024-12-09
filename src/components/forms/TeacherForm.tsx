@@ -10,6 +10,7 @@ import { useFormState } from "react-dom";
 import { createTeacher, updateTeacher } from "@/lib/actions";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { CldUploadWidget } from "next-cloudinary";
 // import { CldUploadWidget } from "next-cloudinary";
 
 const TeacherForm = ({
@@ -182,9 +183,10 @@ const TeacherForm = ({
             </p>
           )}
         </div>
-        {/* <CldUploadWidget
+        <CldUploadWidget
           uploadPreset="school"
           onSuccess={(result, { widget }) => {
+            console.log(result);
             setImg(result.info);
             widget.close();
           }}
@@ -200,7 +202,7 @@ const TeacherForm = ({
               </div>
             );
           }}
-        </CldUploadWidget> */}
+        </CldUploadWidget>
       </div>
       {state.error && (
         <span className="text-red-500">Something went wrong!</span>
