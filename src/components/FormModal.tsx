@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  // deleteClass,
+  deleteClass,
   // deleteExam,
   // deleteStudent,
   deleteSubject,
@@ -14,10 +14,11 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "react-toastify";
 import { FormContainerProps } from "./FormContainer";
+import ClassForm from "./forms/ClassForm";
 
 const deleteActionMap = {
   subject: deleteSubject,
-  // class: deleteClass,
+  class: deleteClass,
   // teacher: deleteTeacher,
   // student: deleteStudent,
   // exam: deleteExam,
@@ -69,14 +70,14 @@ const forms: {
       relatedData={relatedData}
     />
   ),
-  // class: (setOpen, type, data, relatedData) => (
-  //   <ClassForm
-  //     type={type}
-  //     data={data}
-  //     setOpen={setOpen}
-  //     relatedData={relatedData}
-  //   />
-  // ),
+  class: (setOpen, type, data, relatedData) => (
+    <ClassForm
+      type={type}
+      data={data}
+      setOpen={setOpen}
+      relatedData={relatedData}
+    />
+  ),
   // teacher: (setOpen, type, data, relatedData) => (
   //   <TeacherForm
   //     type={type}
