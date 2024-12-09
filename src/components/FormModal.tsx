@@ -22,12 +22,12 @@ const forms: {
   teacher: (type, data) => <TeacherForm type={type} data={data} />,
   student: (type, data) => <StudentForm type={type} data={data} />,
 };
-
 const FormModal = ({
   table,
   type,
   data,
   id,
+  relatedData,
 }: {
   table:
     | "teacher"
@@ -45,6 +45,7 @@ const FormModal = ({
   type: "create" | "update" | "delete";
   data?: any;
   id?: number | string;
+  relatedData?: any;
 }) => {
   const size = type === "create" ? "w-8 h-8" : "w-7 h-7";
   const bgColor =

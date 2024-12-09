@@ -7,6 +7,7 @@ import { Class, Prisma, Subject, Teacher } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { ITEM_PER_PAGE } from "@/lib/settings";
+import { auth } from "@clerk/nextjs/server";
 // import { auth } from "@clerk/nextjs/server";
 
 type TeacherList = Teacher & { subjects: Subject[] } & { classes: Class[] };
@@ -16,8 +17,8 @@ const TeacherListPage = async ({
 }: {
   searchParams: { [key: string]: string | undefined };
 }) => {
-  // const { sessionClaims } = auth();
-  // const role = (sessionClaims?.metadata as { role?: string })?.role;
+  const { sessionClaims } = await auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
   const columns = [
     {
       header: "Info",
@@ -48,14 +49,14 @@ const TeacherListPage = async ({
       accessor: "address",
       className: "hidden lg:table-cell",
     },
-    // ...(role === "admin"
-    //   ? [
-    //       {
-    //         header: "Actions",
-    //         accessor: "action",
-    //       },
-    //     ]
-    //   : []),
+    ...(role === "admin"
+      ? [
+          {
+            header: "Actions",
+            accessor: "action",
+          },
+        ]
+      : []),
   ];
 
   const renderRow = (item: TeacherList) => (
