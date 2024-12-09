@@ -47,6 +47,7 @@ const SubjectListPage = async ({
           {role === "admin" && (
             <>
               <FormContainer table="subject" type="create" />
+              <FormContainer table="subject" type="update" />
             </>
           )}
         </div>
