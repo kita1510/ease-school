@@ -38,12 +38,14 @@ const AttendanceChart = ({
         />
         <Bar
           dataKey="present"
+          name="Có mặt"
           fill="#FAE27C"
           legendType="circle"
           radius={[10, 10, 0, 0]}
         />
         <Bar
           dataKey="absent"
+          name="Vắng"
           fill="#C3EBFA"
           legendType="circle"
           radius={[10, 10, 0, 0]}

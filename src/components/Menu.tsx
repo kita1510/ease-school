@@ -50,7 +50,7 @@ const menuItems = [
       },
       {
         icon: "/exam.png",
-        label: "Thi cử",
+        label: "Lịch thi",
         href: "/list/exams",
         visible: ["admin", "teacher", "student", "parent"],
       },
@@ -68,7 +68,7 @@ const menuItems = [
       },
       {
         icon: "/attendance.png",
-        label: "Chấm công",
+        label: "Chuyên cần",
         href: "/list/attendance",
         visible: ["admin", "teacher", "student", "parent"],
       },
