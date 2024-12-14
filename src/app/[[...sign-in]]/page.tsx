@@ -32,13 +32,13 @@ const LoginPage = () => {
         >
           <h1 className="text-xl font-bold flex items-center gap-2">
             <Image src="/logo.png" alt="" width={24} height={24} />
-            SchooLama
+            Ease School
           </h1>
-          <h2 className="text-gray-400">Sign in to your account</h2>
+          <h2 className="text-gray-400">Đăng nhập vào tài khoản của bạn</h2>
           <Clerk.GlobalError className="text-sm text-red-400" />
           <Clerk.Field name="identifier" className="flex flex-col gap-2">
             <Clerk.Label className="text-xs text-gray-500">
-              Username
+              Tên đăng nhập
             </Clerk.Label>
             <Clerk.Input
               type="text"
@@ -49,7 +49,7 @@ const LoginPage = () => {
           </Clerk.Field>
           <Clerk.Field name="password" className="flex flex-col gap-2">
             <Clerk.Label className="text-xs text-gray-500">
-              Password
+              Mật khẩu
             </Clerk.Label>
             <Clerk.Input
               type="password"
@@ -62,7 +62,7 @@ const LoginPage = () => {
             submit
             className="bg-blue-500 text-white my-1 rounded-md text-sm p-[10px]"
           >
-            Sign In
+            Đăng nhập
           </SignIn.Action>
         </SignIn.Step>
       </SignIn.Root>
