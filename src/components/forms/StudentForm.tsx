@@ -5,15 +5,9 @@ import { useForm } from "react-hook-form";
 import InputField from "../InputField";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import {
-  studentSchema,
-  StudentSchema,
-} from "@/lib/formValidationSchemas";
+import { studentSchema, StudentSchema } from "@/lib/formValidationSchemas";
 import { useFormState } from "react-dom";
-import {
-  createStudent,
-  updateStudent,
-} from "@/lib/actions";
+import { createStudent, updateStudent } from "@/lib/actions";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { CldUploadWidget } from "next-cloudinary";
@@ -71,11 +65,11 @@ const StudentForm = ({
         {type === "create" ? "Create a new student" : "Update the student"}
       </h1>
       <span className="text-xs text-gray-400 font-medium">
-        Authentication Information
+        Thông tin đăng nhập
       </span>
       <div className="flex justify-between flex-wrap gap-4">
         <InputField
-          label="Username"
+          label="Tên đăng nhập"
           name="username"
           defaultValue={data?.username}
           register={register}
@@ -89,7 +83,7 @@ const StudentForm = ({
           error={errors?.email}
         />
         <InputField
-          label="Password"
+          label="Mật khẩu"
           name="password"
           type="password"
           defaultValue={data?.password}
@@ -98,7 +92,7 @@ const StudentForm = ({
         />
       </div>
       <span className="text-xs text-gray-400 font-medium">
-        Personal Information
+        Thông tin cá nhân
       </span>
       <CldUploadWidget
         uploadPreset="school"
@@ -114,49 +108,49 @@ const StudentForm = ({
               onClick={() => open()}
             >
               <Image src="/upload.png" alt="" width={28} height={28} />
-              <span>Upload a photo</span>
+              <span>Tải lên ảnh</span>
             </div>
           );
         }}
       </CldUploadWidget>
       <div className="flex justify-between flex-wrap gap-4">
         <InputField
-          label="First Name"
+          label="Họ"
           name="name"
           defaultValue={data?.name}
           register={register}
           error={errors.name}
         />
         <InputField
-          label="Last Name"
+          label="Tên"
           name="surname"
           defaultValue={data?.surname}
           register={register}
           error={errors.surname}
         />
         <InputField
-          label="Phone"
+          label="Số điện thoại"
           name="phone"
           defaultValue={data?.phone}
           register={register}
           error={errors.phone}
         />
         <InputField
-          label="Address"
+          label="Địa chỉ"
           name="address"
           defaultValue={data?.address}
           register={register}
           error={errors.address}
         />
         <InputField
-          label="Blood Type"
+          label="Nhóm máu"
           name="bloodType"
           defaultValue={data?.bloodType}
           register={register}
           error={errors.bloodType}
         />
         <InputField
-          label="Birthday"
+          label="Ngày sinh"
           name="birthday"
           defaultValue={data?.birthday.toISOString().split("T")[0]}
           register={register}
@@ -180,7 +174,7 @@ const StudentForm = ({
           />
         )}
         <div className="flex flex-col gap-2 w-full md:w-1/4">
-          <label className="text-xs text-gray-500">Sex</label>
+          <label className="text-xs text-gray-500">Giới tính</label>
           <select
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
             {...register("sex")}
@@ -196,7 +190,7 @@ const StudentForm = ({
           )}
         </div>
         <div className="flex flex-col gap-2 w-full md:w-1/4">
-          <label className="text-xs text-gray-500">Grade</label>
+          <label className="text-xs text-gray-500">Lớp học</label>
           <select
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
             {...register("gradeId")}
@@ -215,7 +209,7 @@ const StudentForm = ({
           )}
         </div>
         <div className="flex flex-col gap-2 w-full md:w-1/4">
-          <label className="text-xs text-gray-500">Class</label>
+          <label className="text-xs text-gray-500">Lớp học</label>
           <select
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
             {...register("classId")}
@@ -230,8 +224,8 @@ const StudentForm = ({
               }) => (
                 <option value={classItem.id} key={classItem.id}>
                   ({classItem.name} -{" "}
-                  {classItem._count.students + "/" + classItem.capacity}{" "}
-                  Capacity)
+                  {classItem._count.students + "/" + classItem.capacity} học
+                  sinh)
                 </option>
               )
             )}
@@ -243,11 +237,9 @@ const StudentForm = ({
           )}
         </div>
       </div>
-      {state.error && (
-        <span className="text-red-500">Something went wrong!</span>
-      )}
+      {state.error && <span className="text-red-500">Có lỗi xảy ra!</span>}
       <button type="submit" className="bg-blue-400 text-white p-2 rounded-md">
-        {type === "create" ? "Create" : "Update"}
+        {type === "create" ? "Tạo mới" : "Cập nhật"}
       </button>
     </form>
   );

@@ -24,7 +24,12 @@ const UserCard = async ({
         <Image src="/more.png" alt="" width={20} height={20} />
       </div>
       <h1 className="text-2xl font-semibold my-4">{data}</h1>
-      <h2 className="capitalize text-sm font-medium text-gray-500">{type}s</h2>
+      <h2 className="capitalize text-sm font-medium text-gray-500">
+        {type === "student" && "Học sinh"}
+        {type === "teacher" && "Giáo viên"}
+        {type === "admin" && "Quản trị viên"}
+        {type === "parent" && "Phụ huynh"}
+      </h2>
     </div>
   );
 };

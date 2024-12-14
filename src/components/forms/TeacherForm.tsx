@@ -62,14 +62,14 @@ const TeacherForm = ({
   return (
     <form className="flex flex-col gap-8" onSubmit={onSubmit}>
       <h1 className="text-xl font-semibold">
-        {type === "create" ? "Create a new teacher" : "Update the teacher"}
+        {type === "create" ? "Tạo mới giáo viên" : "Cập nhật giáo viên"}
       </h1>
       <span className="text-xs text-gray-400 font-medium">
-        Authentication Information
+        Thông tin đăng nhập
       </span>
       <div className="flex justify-between flex-wrap gap-4">
         <InputField
-          label="Username"
+          label="Tên đăng nhập"
           name="username"
           defaultValue={data?.username}
           register={register}
@@ -83,7 +83,7 @@ const TeacherForm = ({
           error={errors?.email}
         />
         <InputField
-          label="Password"
+          label="Mật khẩu"
           name="password"
           type="password"
           defaultValue={data?.password}
@@ -92,46 +92,46 @@ const TeacherForm = ({
         />
       </div>
       <span className="text-xs text-gray-400 font-medium">
-        Personal Information
+        Thông tin cá nhân
       </span>
       <div className="flex justify-between flex-wrap gap-4">
         <InputField
-          label="First Name"
+          label="Họ"
           name="name"
           defaultValue={data?.name}
           register={register}
           error={errors.name}
         />
         <InputField
-          label="Last Name"
+          label="Tên"
           name="surname"
           defaultValue={data?.surname}
           register={register}
           error={errors.surname}
         />
         <InputField
-          label="Phone"
+          label="Số điện thoại"
           name="phone"
           defaultValue={data?.phone}
           register={register}
           error={errors.phone}
         />
         <InputField
-          label="Address"
+          label="Địa chỉ"
           name="address"
           defaultValue={data?.address}
           register={register}
           error={errors.address}
         />
         <InputField
-          label="Blood Type"
+          label="Nhóm máu"
           name="bloodType"
           defaultValue={data?.bloodType}
           register={register}
           error={errors.bloodType}
         />
         <InputField
-          label="Birthday"
+          label="Ngày sinh"
           name="birthday"
           defaultValue={data?.birthday.toISOString().split("T")[0]}
           register={register}
@@ -148,7 +148,7 @@ const TeacherForm = ({
           />
         )}
         <div className="flex flex-col gap-2 w-full md:w-1/4">
-          <label className="text-xs text-gray-500">Sex</label>
+          <label className="text-xs text-gray-500">Giới tính</label>
           <select
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
             {...register("sex")}
@@ -164,7 +164,7 @@ const TeacherForm = ({
           )}
         </div>
         <div className="flex flex-col gap-2 w-full md:w-1/4">
-          <label className="text-xs text-gray-500">Subjects</label>
+          <label className="text-xs text-gray-500">Môn học</label>
           <select
             multiple
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
@@ -198,7 +198,7 @@ const TeacherForm = ({
                 onClick={() => open()}
               >
                 <Image src="/upload.png" alt="" width={28} height={28} />
-                <span>Upload a photo</span>
+                <span>Tải lên ảnh</span>
               </div>
             );
           }}
@@ -208,7 +208,7 @@ const TeacherForm = ({
         <span className="text-red-500">Something went wrong!</span>
       )}
       <button className="bg-blue-400 text-white p-2 rounded-md">
-        {type === "create" ? "Create" : "Update"}
+        {type === "create" ? "Tạo mới" : "Cập nhật"}
       </button>
     </form>
   );

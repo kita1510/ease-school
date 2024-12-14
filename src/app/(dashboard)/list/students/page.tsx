@@ -31,7 +31,7 @@ const StudentListPage = async ({
       className: "hidden md:table-cell",
     },
     {
-      header: "Lớp học",
+      header: "Khối",
       accessor: "grade",
       className: "hidden md:table-cell",
     },

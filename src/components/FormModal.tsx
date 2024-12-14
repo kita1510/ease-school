@@ -143,7 +143,10 @@ const FormModal = ({
       <form action={formAction} className="p-4 flex flex-col gap-4">
         <input type="text | number" name="id" value={id} hidden />
         <span className="text-center font-medium">
-          All data will be lost. Are you sure you want to delete this {table}?
+          {table === "student" && "Học sinh"}{" "}
+          {table === "teacher" && "Giáo viên"} {table === "class" && "Lớp học"}{" "}
+          {table === "subject" && "Môn học"} {table === "exam" && "Kỳ thi"} này sẽ
+          bị xóa. Bạn có chắc chắn muốn xóa?
         </span>
         <button className="bg-red-700 text-white py-2 px-4 rounded-md border-none w-max self-center">
           Delete
@@ -152,7 +155,7 @@ const FormModal = ({
     ) : type === "create" || type === "update" ? (
       forms[table](setOpen, type, data, relatedData)
     ) : (
-      "Form not found!"
+      "Không tìm thấy form!"
     );
   };
 
