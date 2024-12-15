@@ -47,7 +47,7 @@ const SubjectForm = ({
 
   useEffect(() => {
     if (state.success) {
-      toast(`Subject has been ${type === "create" ? "created" : "updated"}!`);
+      toast(`Môn học đã được ${type === "create" ? "tạo" : "cập nhật"}!`);
       setOpen(false);
       router.refresh();
     }
@@ -58,12 +58,12 @@ const SubjectForm = ({
   return (
     <form className="flex flex-col gap-8" onSubmit={onSubmit}>
       <h1 className="text-xl font-semibold">
-        {type === "create" ? "Create a new subject" : "Update the subject"}
+        {type === "create" ? "Tạo môn học" : "Cập nhật môn học"}
       </h1>
 
       <div className="flex justify-between flex-wrap gap-4">
         <InputField
-          label="Subject name"
+          label="Tên môn học"
           name="name"
           defaultValue={data?.name}
           register={register}
@@ -79,7 +79,7 @@ const SubjectForm = ({
           />
         )}
         <div className="flex flex-col gap-2 w-full md:w-1/4">
-          <label className="text-xs text-gray-500">Teachers</label>
+          <label className="text-xs text-gray-500">Giáo viên</label>
           <select
             multiple
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
@@ -105,7 +105,7 @@ const SubjectForm = ({
         <span className="text-red-500">Something went wrong!</span>
       )}
       <button className="bg-blue-400 text-white p-2 rounded-md">
-        {type === "create" ? "Create" : "Update"}
+        {type === "create" ? "Tạo" : "Cập nhật"}
       </button>
     </form>
   );

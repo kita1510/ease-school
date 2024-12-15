@@ -144,9 +144,10 @@ const FormModal = ({
         <input type="text | number" name="id" value={id} hidden />
         <span className="text-center font-medium">
           {table === "student" && "Học sinh"}{" "}
+          {table === "parent" && "Phụ huynh"}{" "}
           {table === "teacher" && "Giáo viên"} {table === "class" && "Lớp học"}{" "}
-          {table === "subject" && "Môn học"} {table === "exam" && "Kỳ thi"} này sẽ
-          bị xóa. Bạn có chắc chắn muốn xóa?
+          {table === "subject" && "Môn học"} {table === "exam" && "Kỳ thi"} này
+          sẽ bị xóa. Bạn có chắc chắn muốn xóa?
         </span>
         <button className="bg-red-700 text-white py-2 px-4 rounded-md border-none w-max self-center">
           Delete
