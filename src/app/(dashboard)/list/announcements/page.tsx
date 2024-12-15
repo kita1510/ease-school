@@ -18,26 +18,26 @@ const AnnouncementListPage = async ({
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   const currentUserId = userId;
 
-  console.log(sessionClaims)
+  // console.log(sessionClaims)
 
   const columns = [
     {
-      header: "Title",
+      header: "Tiêu đề",
       accessor: "title",
     },
     {
-      header: "Class",
+      header: "Lớp",
       accessor: "class",
     },
     {
-      header: "Date",
+      header: "Ngày",
       accessor: "date",
       className: "hidden md:table-cell",
     },
     ...(role === "admin"
       ? [
           {
-            header: "Actions",
+            header: "Hành động",
             accessor: "action",
           },
         ]
@@ -120,7 +120,7 @@ const AnnouncementListPage = async ({
       {/* TOP */}
       <div className="flex items-center justify-between">
         <h1 className="hidden md:block text-lg font-semibold">
-          All Announcements
+          Tất cả thông báo
         </h1>
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <TableSearch />

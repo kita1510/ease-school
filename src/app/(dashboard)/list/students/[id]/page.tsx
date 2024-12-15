@@ -112,7 +112,7 @@ const SingleStudentPage = async ({
                 <h1 className="text-xl font-semibold">
                   {student.class.name.charAt(0)}th
                 </h1>
-                <span className="text-sm text-gray-400">Lớp học</span>
+                <span className="text-sm text-gray-400">Khối học</span>
               </div>
             </div>
             {/* CARD */}
@@ -128,7 +128,7 @@ const SingleStudentPage = async ({
                 <h1 className="text-xl font-semibold">
                   {student.class._count.lessons}
                 </h1>
-                <span className="text-sm text-gray-400">Bài giảng</span>
+                <span className="text-sm text-gray-400">Môn học</span>
               </div>
             </div>
             {/* CARD */}
@@ -162,7 +162,7 @@ const SingleStudentPage = async ({
               className="p-3 rounded-md bg-lamaSkyLight"
               href={`/list/lessons?classId=${student.class.id}`}
             >
-              Bài giảng của học sinh
+              Môn học của học sinh
             </Link>
             <Link
               className="p-3 rounded-md bg-lamaPurpleLight"

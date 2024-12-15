@@ -32,7 +32,7 @@ const ClassListPage = async ({
       className: "hidden md:table-cell",
     },
     {
-      header: "Giáo viên",
+      header: "Giáo viên chủ nhiệm",
       accessor: "supervisor",
       className: "hidden md:table-cell",
     },

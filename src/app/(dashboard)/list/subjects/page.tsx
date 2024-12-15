@@ -47,7 +47,12 @@ const SubjectListPage = async ({
         <div className="flex items-center gap-2">
           {role === "admin" && (
             <>
-              <FormContainer table="subject" type="update" />
+              <FormContainer
+                table="subject"
+                type="update"
+                data={item}
+                id={item.id}
+              />
               <FormContainer table="subject" type="delete" id={item.id} />
             </>
           )}

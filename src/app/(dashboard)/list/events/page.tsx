@@ -21,32 +21,32 @@ const EventListPage = async ({
 
   const columns = [
     {
-      header: "Title",
+      header: "Tiêu đề",
       accessor: "title",
     },
     {
-      header: "Class",
+      header: "Lớp",
       accessor: "class",
     },
     {
-      header: "Date",
+      header: "Ngày",
       accessor: "date",
       className: "hidden md:table-cell",
     },
     {
-      header: "Start Time",
+      header: "Thời gian bắt đầu",
       accessor: "startTime",
       className: "hidden md:table-cell",
     },
     {
-      header: "End Time",
+      header: "Thời gian kết thúc",
       accessor: "endTime",
       className: "hidden md:table-cell",
     },
     ...(role === "admin"
       ? [
           {
-            header: "Actions",
+            header: "Hành động",
             accessor: "action",
           },
         ]

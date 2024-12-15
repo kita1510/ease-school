@@ -102,7 +102,7 @@ const SingleTeacherPage = async ({
               />
               <div className="">
                 <h1 className="text-xl font-semibold">90%</h1>
-                <span className="text-sm text-gray-400">Chấm công</span>
+                <span className="text-sm text-gray-400">Chuyên cần</span>
               </div>
             </div>
             {/* CARD */}

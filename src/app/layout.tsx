@@ -5,6 +5,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import  WebVitals  from "./_components/web-vitals";
 
 const itim = Itim({ subsets: ["latin"], weight: ["400"] });
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="vn">
         <body className={itim.className}>
           {children} <ToastContainer position="bottom-right" theme="dark" />
         </body>
