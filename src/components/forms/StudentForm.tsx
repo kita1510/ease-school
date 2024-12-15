@@ -51,7 +51,7 @@ const StudentForm = ({
 
   useEffect(() => {
     if (state.success) {
-      toast(`Student has been ${type === "create" ? "created" : "updated"}!`);
+      toast(`Học sinh đã được ${type === "create" ? "tạo" : "cập nhật"}!`);
       setOpen(false);
       router.refresh();
     }
@@ -62,7 +62,7 @@ const StudentForm = ({
   return (
     <form className="flex flex-col gap-8" onSubmit={onSubmit}>
       <h1 className="text-xl font-semibold">
-        {type === "create" ? "Create a new student" : "Update the student"}
+        {type === "create" ? "Tạo học sinh" : "Cập nhật học sinh"}
       </h1>
       <span className="text-xs text-gray-400 font-medium">
         Thông tin đăng nhập

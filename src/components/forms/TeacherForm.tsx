@@ -51,7 +51,7 @@ const TeacherForm = ({
 
   useEffect(() => {
     if (state.success) {
-      toast(`Teacher has been ${type === "create" ? "created" : "updated"}!`);
+      toast(`Giáo viên đã được ${type === "create" ? "tạo" : "cập nhật"}!`);
       setOpen(false);
       router.refresh();
     }

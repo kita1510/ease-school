@@ -133,7 +133,7 @@ const FormModal = ({
 
     useEffect(() => {
       if (state.success) {
-        toast(`${table} has been deleted!`);
+        toast(`${table} đã được xóa!`);
         setOpen(false);
         router.refresh();
       }
@@ -150,7 +150,7 @@ const FormModal = ({
           sẽ bị xóa. Bạn có chắc chắn muốn xóa?
         </span>
         <button className="bg-red-700 text-white py-2 px-4 rounded-md border-none w-max self-center">
-          Delete
+          Xóa
         </button>
       </form>
     ) : type === "create" || type === "update" ? (

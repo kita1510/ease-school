@@ -3,14 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import InputField from "../InputField";
-import {
-  examSchema,
-  ExamSchema,
-} from "@/lib/formValidationSchemas";
-import {
-  createExam,
-  updateExam,
-} from "@/lib/actions";
+import { examSchema, ExamSchema } from "@/lib/formValidationSchemas";
+import { createExam, updateExam } from "@/lib/actions";
 import { useFormState } from "react-dom";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { toast } from "react-toastify";
@@ -54,7 +48,7 @@ const ExamForm = ({
 
   useEffect(() => {
     if (state.success) {
-      toast(`Exam has been ${type === "create" ? "created" : "updated"}!`);
+      toast(`Kỳ thi đã được ${type === "create" ? "tạo" : "cập nhật"}!`);
       setOpen(false);
       router.refresh();
     }
@@ -65,19 +59,19 @@ const ExamForm = ({
   return (
     <form className="flex flex-col gap-8" onSubmit={onSubmit}>
       <h1 className="text-xl font-semibold">
-        {type === "create" ? "Create a new exam" : "Update the exam"}
+        {type === "create" ? "Tạo kỳ thi" : "Cập nhật kỳ thi"}
       </h1>
 
       <div className="flex justify-between flex-wrap gap-4">
         <InputField
-          label="Exam title"
+          label="Tên kỳ thi"
           name="title"
           defaultValue={data?.title}
           register={register}
           error={errors?.title}
         />
         <InputField
-          label="Start Date"
+          label="Ngày bắt đầu"
           name="startTime"
           defaultValue={data?.startTime}
           register={register}
@@ -85,7 +79,7 @@ const ExamForm = ({
           type="datetime-local"
         />
         <InputField
-          label="End Date"
+          label="Ngày kết thúc"
           name="endTime"
           defaultValue={data?.endTime}
           register={register}
@@ -102,7 +96,7 @@ const ExamForm = ({
           />
         )}
         <div className="flex flex-col gap-2 w-full md:w-1/4">
-          <label className="text-xs text-gray-500">Lesson</label>
+          <label className="text-xs text-gray-500">Môn học</label>
           <select
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
             {...register("lessonId")}
@@ -121,11 +115,9 @@ const ExamForm = ({
           )}
         </div>
       </div>
-      {state.error && (
-        <span className="text-red-500">Something went wrong!</span>
-      )}
+      {state.error && <span className="text-red-500">Có lỗi xảy ra!</span>}
       <button className="bg-blue-400 text-white p-2 rounded-md">
-        {type === "create" ? "Create" : "Update"}
+        {type === "create" ? "Tạo" : "Cập nhật"}
       </button>
     </form>
   );
