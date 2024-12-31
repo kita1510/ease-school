@@ -1,4 +1,5 @@
 // import FormContainer from "@/components/FormContainer";
+import FormContainer from "@/components/FormContainer";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
@@ -17,8 +18,6 @@ const AnnouncementListPage = async ({
   const { userId, sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   const currentUserId = userId;
-
-  // console.log(sessionClaims)
 
   const columns = [
     {
@@ -44,28 +43,36 @@ const AnnouncementListPage = async ({
       : []),
   ];
 
-  const renderRow = (item: AnnouncementList) => (
-    <tr
-      key={item.id}
-      className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight"
-    >
-      <td className="flex items-center gap-4 p-4">{item.title}</td>
-      <td>{item.class?.name || "-"}</td>
-      <td className="hidden md:table-cell">
-        {new Intl.DateTimeFormat("en-US").format(item.date)}
-      </td>
-      <td>
-        <div className="flex items-center gap-2">
-          {/* {role === "admin" && (
-            <>
-              <FormContainer table="announcement" type="update" data={item} />
-              <FormContainer table="announcement" type="delete" id={item.id} />
-            </>
-          )} */}
-        </div>
-      </td>
-    </tr>
-  );
+  const renderRow = (item: AnnouncementList) => {
+    console.log("item", item);
+    return (
+      <tr
+        key={item.id}
+        className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight"
+      >
+        <td className="flex items-center gap-4 p-4">{item.title}</td>
+        <td>{item.class?.name || "-"}</td>
+        <td className="hidden md:table-cell">
+          {new Intl.DateTimeFormat("en-US").format(item.date)}
+        </td>
+        <td>
+          <div className="flex items-center gap-2">
+            {role === "admin" && (
+              <>
+                <FormContainer table="announcement" type="update" data={item} />
+                <FormContainer
+                  table="announcement"
+                  type="delete"
+                  id={item.id}
+                />
+              </>
+            )}
+          </div>
+        </td>
+      </tr>
+    );
+  };
+
   const { page, ...queryParams } = searchParams;
 
   const p = page ? parseInt(page) : 1;
@@ -131,9 +138,9 @@ const AnnouncementListPage = async ({
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
               <Image src="/sort.png" alt="" width={14} height={14} />
             </button>
-            {/* {role === "admin" && (
+            {role === "admin" && (
               <FormContainer table="announcement" type="create" />
-            )} */}
+            )}
           </div>
         </div>
       </div>
